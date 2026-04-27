@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Blood | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Blood Search</span>
+        <h1>Search for Donors</h1>
+        <p class="lead">Choose a blood group to find available donors quickly. The search results display clear contact and city information.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <form action="{{ url_for('search_blood') }}" method="POST" class="donor-form">
+            <div class="form-grid">
+              <label>
+                Select Blood Group
+                <select name="blood_group" class="select-field" required>
+                  <option value="">Choose blood group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Search with confidence</h2>
+            <p>The search panel is built for clear patient workflows and quick results during project demonstration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="result-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Blood Group</th>
+              <th>Phone</th>
+              <th>City</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if donors %}
+              {% for donor in donors %}
+              <tr>
+                <td>{{ donor.name }}</td>
+                <td>{{ donor.age }}</td>
+                <td>{{ donor.gender }}</td>
+                <td>{{ donor.blood_group }}</td>
+                <td>{{ donor.phone }}</td>
+                <td>{{ donor.address }}</td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="6" style="padding: 20px 18px; text-align: center; color: var(--text-muted);">
+                  {% if search_group %}
+                    No donors found for <strong>{{ search_group }}</strong>.
+                  {% else %}
+                    Select a blood group and click Search to view available donors.
+                  {% endif %}
+                </td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Blood | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Blood Request</span>
+        <h1>Request Blood for a Patient</h1>
+        <p class="lead">Submit patient and hospital details in a clinical, professional form designed for a strong college presentation.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <form action="{{ url_for('request_blood') }}" method="POST" class="donor-form">
+            <div class="form-grid">
+              <label>
+                Patient Name
+                <input type="text" name="name" placeholder="Enter patient name" class="input-field" required />
+              </label>
+
+              <label>
+                Blood Group
+                <select name="blood_group" class="select-field" required>
+                  <option value="">Choose blood group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </label>
+
+              <label>
+                Hospital Name
+                <input type="text" name="hospital" placeholder="Enter hospital name" class="input-field" required />
+              </label>
+
+              <label>
+                Phone Number
+                <input type="tel" name="phone" placeholder="1234567890" class="input-field" required />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" placeholder="name@example.com" class="input-field" />
+              </label>
+
+              <label>
+                City
+                <input type="text" name="city" placeholder="Enter city" class="input-field" required />
+              </label>
+
+              <label>
+                Units Needed
+                <input type="number" name="units" placeholder="2" min="1" class="input-field" required />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit Request</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Professional request layout</h2>
+            <p>This clean, centered design uses the shared red-and-white style for a polished hospital management presentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

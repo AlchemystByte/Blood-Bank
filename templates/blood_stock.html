@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Stock | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Stock Management</span>
+        <h1>Blood Stock Overview</h1>
+        <p class="lead">Monitor and update blood inventory with a professional stock table and a clear update form.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <div class="table-responsive">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Blood Group</th>
+                  <th>Units Available</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in stock %}
+                <tr>
+                  <td>{{ item.blood_group }}</td>
+                  <td>{{ item.units }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <form action="{{ url_for('blood_stock') }}" method="POST" style="margin-top: 24px;" class="donor-form">
+            <div class="form-grid">
+              <label>
+                Blood Group
+                <select name="blood_group" class="select-field" required>
+                  <option value="">Choose blood group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </label>
+
+              <label>
+                Units to Add
+                <input type="number" name="units" placeholder="10" min="1" class="input-field" required />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Update Stock</button>
+              <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Inventory at a glance</h2>
+            <p>Track blood availability for each blood group and keep the inventory updated with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Bank Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card home-card">
+      <div class="page-header">
+        <span class="eyebrow">Hospital Blood Center</span>
+        <h1>Blood Bank Management System</h1>
+        <p class="lead">A modern and professional interface for donor registration, blood search, request handling, and admin stock management.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="form-note">Use the quick access buttons below to navigate between donor registration, blood search, request forms, and admin login.</p>
+          <div class="button-row">
+            <a href="{{ url_for('register_donor') }}" class="btn btn-primary">Register Donor</a>
+            <a href="{{ url_for('search_blood') }}" class="btn btn-secondary">Search Blood</a>
+            <a href="{{ url_for('request_blood') }}" class="btn btn-primary">Request Blood</a>
+            <a href="{{ url_for('admin_login') }}" class="btn btn-secondary">Admin Login</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Designed for presentation</h2>
+            <p>Clean spacing, consistent red-and-white styling, and a hospital-grade layout make this ideal for your college viva.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

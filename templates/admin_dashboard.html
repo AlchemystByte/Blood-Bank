@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Administrator Panel</span>
+        <h1>Blood Bank Admin Dashboard</h1>
+        <p class="lead">Monitor donors, review requests, manage stock, and execute admin actions from one polished dashboard.</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h2>Donor List</h2>
+          <p>View all registered donors with blood group and contact details.</p>
+          <small>{{ donors|length }} donors registered</small>
+          <div class="form-actions" style="margin-top: 18px;">
+            <a href="{{ url_for('donor_list') }}" class="btn btn-primary">Open</a>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h2>Blood Requests</h2>
+          <p>Review pending and completed requests for a streamlined response process.</p>
+          <small>{{ requests|length }} active requests</small>
+          <div class="form-actions" style="margin-top: 18px;">
+            <a href="{{ url_for('view_requests') }}" class="btn btn-primary">View Requests</a>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h2>Blood Stock</h2>
+          <p>Track available units and update stock in real time.</p>
+          <small>{{ stock|length }} stock records</small>
+          <div class="form-actions" style="margin-top: 18px;">
+            <a href="{{ url_for('blood_stock') }}" class="btn btn-primary">Manage Stock</a>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h2>Logout</h2>
+          <p>Sign out securely after completing admin tasks.</p>
+          <div class="form-actions" style="margin-top: 18px;">
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-secondary">Logout</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

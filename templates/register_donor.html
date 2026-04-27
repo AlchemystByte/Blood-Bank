@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Donor | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Donor Registration</span>
+        <h1>Register a New Donor</h1>
+        <p class="lead">Capture donor information in a clean, hospital-grade registration form that is easy to use and visually consistent.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <form action="{{ url_for('register_donor') }}" method="POST" class="donor-form">
+            <div class="form-grid">
+              <label>
+                Full Name
+                <input type="text" name="name" placeholder="Enter full name" class="input-field" required />
+              </label>
+
+              <label>
+                Age
+                <input type="number" name="age" placeholder="18" min="18" max="75" class="input-field" required />
+              </label>
+
+              <label>
+                Gender
+                <select name="gender" class="select-field" required>
+                  <option value="">Choose gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                Blood Group
+                <select name="blood_group" class="select-field" required>
+                  <option value="">Choose blood group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </label>
+
+              <label>
+                Phone Number
+                <input type="tel" name="phone" placeholder="123-456-7890" class="input-field" />
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" placeholder="name@example.com" class="input-field" />
+              </label>
+
+              <label>
+                City
+                <input type="text" name="address" placeholder="Enter city" class="input-field" />
+              </label>
+
+              <label>
+                Last Donation Date
+                <input type="date" name="last_donation" class="input-field" />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit Registration</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Donor onboarding made easy</h2>
+            <p>Collect accurate donor information while maintaining professional styling for your project demo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

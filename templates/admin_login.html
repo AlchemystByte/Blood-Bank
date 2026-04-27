@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Admin Access</span>
+        <h1>Secure Admin Login</h1>
+        <p class="lead">Sign in to manage donors, stock, and blood requests with a polished admin portal.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <form action="{{ url_for('admin_login') }}" method="POST" class="donor-form">
+            <div class="form-grid">
+              <label>
+                Username
+                <input type="text" name="username" placeholder="Enter username" class="input-field" required />
+              </label>
+
+              <label>
+                Password
+                <input type="password" name="password" placeholder="Enter password" class="input-field" required />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Protected portal</h2>
+            <p>Keep admin access simple, secure, and professional for your project demonstration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

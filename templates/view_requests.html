@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blood Requests | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Request Records</span>
+        <h1>Blood Request Management</h1>
+        <p class="lead">Review all submitted blood requests in a clear, professional dashboard with status tracking and patient details.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <div class="table-responsive">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Patient Name</th>
+                  <th>Blood Group</th>
+                  <th>Hospital</th>
+                  <th>Phone</th>
+                  <th>City</th>
+                  <th>Units</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if requests %}
+                  {% for req in requests %}
+                  <tr>
+                    <td><strong>{{ req.id }}</strong></td>
+                    <td>{{ req.name }}</td>
+                    <td>{{ req.blood_group }}</td>
+                    <td>{{ req.hospital }}</td>
+                    <td>{{ req.phone }}</td>
+                    <td>{{ req.city }}</td>
+                    <td>{{ req.units }}</td>
+                    <td>{{ req.request_date }}</td>
+                    <td>
+                      <span class="
+                            {% if req.status == 'Pending' %}
+                                    status-pending
+                                {% elif req.status == 'Approved' %}
+                                    status-approved
+                                {% elif req.status == 'Rejected' %}
+                                    status-rejected
+                                {% else %}
+                                    status-default
+                                {% endif %}
+                                ">
+                        {{ req.status }}
+                      </span>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                {% else %}
+                <tr>
+                  <td colspan="9" style="padding: 24px 18px; text-align: center; color: var(--text-muted); font-size: 1.05rem;">
+                    No blood requests found. Submit your first request to get started.
+                  </td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-actions" style="margin-top: 24px;">
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Complete request overview</h2>
+            <p>Track all blood requests with status at a glance. The hospital-style layout is designed for efficient admin review and college presentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

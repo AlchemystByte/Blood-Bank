@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donor List | Blood Bank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="page-card">
+      <div class="page-header">
+        <span class="eyebrow">Donor Records</span>
+        <h1>Registered Donors</h1>
+        <p class="lead">Review all donor entries in a clear table layout with modern spacing and visual hierarchy.</p>
+      </div>
+
+      <div class="hero-panel">
+        <div>
+          <div class="table-responsive">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Blood Group</th>
+                  <th>Phone</th>
+                  <th>City</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for donor in donors %}
+                <tr>
+                  <td>{{ donor.name }}</td>
+                  <td>{{ donor.age }}</td>
+                  <td>{{ donor.gender }}</td>
+                  <td>{{ donor.blood_group }}</td>
+                  <td>{{ donor.phone }}</td>
+                  <td>{{ donor.address }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-actions" style="margin-top: 24px;">
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-copy">
+            <h2>Donor overview</h2>
+            <p>Keep donor data accessible and presentable, with a table layout that looks strong for demonstration and review.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
